@@ -29,7 +29,12 @@ namespace ContosoPizza.Controllers
             return pizza;
         }
 
-        // POST action
+        [HttpPost]
+        public IActionResult Create(Pizza pizza)
+        {            
+            PizzaService.Add(pizza);
+            return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
+        }
 
         // PUT action
 
